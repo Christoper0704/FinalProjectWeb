@@ -18,6 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/insert', function () {
+    $stuRef = app('firebase.firestore')->database()->collection('Vtuber')->newDocument();
+    $stuRef->set([
+        'firstname' => 'A',
+        'lastname' => 'B',
+        'ras' => 'C'
+]);
+});
+
 
 Route::group(['middleware' => ['auth']], function() {
     /**

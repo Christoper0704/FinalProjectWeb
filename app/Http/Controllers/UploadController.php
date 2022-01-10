@@ -14,9 +14,15 @@ class UploadController extends Controller
 		$this->validate($request, [
 			'file' => 'required',
 		]);
+
  
 		// menyimpan data file yang diupload ke variabel $file
 		$file = $request->file('file');
+
+		$path = Storage::putFile(
+            'images',
+            $request->file('file')
+        );
  
       	        // nama file
 		echo 'File Name: '.$file->getClientOriginalName();
@@ -38,9 +44,13 @@ class UploadController extends Controller
 		echo 'File Mime Type: '.$file->getMimeType();
  
       	        // isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'data_file';
+		$tujuan_upload = 'images';
  
                 // upload file
 		$file->move($tujuan_upload,$file->getClientOriginalName());
+
+		return redirect()
+            ->back()
+            ->withSuccess("Image succes Uploaded in " . $path);
 	}
 }
