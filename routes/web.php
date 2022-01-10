@@ -46,3 +46,5 @@ Route::post('/upload/proses', 'UploadController@proses_upload');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');

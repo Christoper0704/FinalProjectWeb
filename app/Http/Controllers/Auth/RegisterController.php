@@ -82,4 +82,22 @@ class RegisterController extends Controller
         return back()->withInput();
     }
     }
+
+    protected function register(Request $request) {
+        try {
+          $this->validator($request->all())->validate();
+          $userProperties = [
+             'email' => $request->input('email'),
+             'emailVerified' => false,
+             'password' => $request->input('password'),
+             'displayName' => $request->input('name'),
+             'disabled' => false,
+          ];
+          $createdUser = $this->auth->createUser($userProperties);
+          return redirect()->route('login');
+        } catch (FirebaseException $e) {
+           Session::flash('error', $e->getMessage());
+           return back()->withInput();
+        }
+     }
 }
