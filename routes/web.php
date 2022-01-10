@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
  });
 
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
+
 Route::get('users/index', [LogoutController::class, 'index'])->name('users.index');
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
