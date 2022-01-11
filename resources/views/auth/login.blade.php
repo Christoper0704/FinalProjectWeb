@@ -13,7 +13,7 @@
 
                         <div class="form-outline mb-2">
 
-                        <input id="email" type="text" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -61,6 +61,7 @@
         storageBucket: "login-firebase-737c3.appspot.com",
         messagingSenderId: "782989826329",
         appId: "1:782989826329:web:3d0dda8cd824026a6acd88",
+        measurementId: "G-HE23M3BD0S"
       };
       firebase.initializeApp(config);
       var facebookProvider = new firebase.auth.FacebookAuthProvider();

@@ -21,7 +21,7 @@ class FirebaseUserProvider implements UserProvider {
       'localId' => $firebaseUser->uid,
       'email' => $firebaseUser->email,
       'name' => $firebaseUser->name,
-      'nomorakta' => $firebaseUser->nomotakta
+      'nomorakta' => $firebaseUser->nomorakta
     ]);
     return $user;
   }

@@ -39,7 +39,7 @@
             text-align: center;
             color: black;
         }
-        input[type="text"]:focus,[type="password"]:focus{
+        input[type="text"]:focus,[type="password"]:focus,[type="email"]:focus{
             background-color: #F2A154;
         }
         a:link{
