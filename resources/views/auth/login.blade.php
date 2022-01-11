@@ -61,7 +61,6 @@
         storageBucket: "login-firebase-737c3.appspot.com",
         messagingSenderId: "782989826329",
         appId: "1:782989826329:web:3d0dda8cd824026a6acd88",
-        measurementId: "G-HE23M3BD0S"
       };
       firebase.initializeApp(config);
       var facebookProvider = new firebase.auth.FacebookAuthProvider();

@@ -35,8 +35,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
  });
 
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
-
 Route::get('users/index', [LogoutController::class, 'index'])->name('users.index');
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
@@ -45,6 +43,12 @@ Route::post('/upload/proses', 'UploadController@proses_upload');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
 
 Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
+
+Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::class)->middleware('user','fireauth');
+
+Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
+
+Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, 'verify_email'])->name('verify')->middleware('fireauth');
