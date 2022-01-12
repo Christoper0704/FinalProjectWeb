@@ -67,3 +67,5 @@ Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::cl
 Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, 'verify_email'])->name('verify')->middleware('fireauth');
 
 Route::get('/profilerestaurant',[App\Http\Controllers\RestaurantProfileController::class, 'show'])->name('profilerestaurant');
+
+Route::get('/booking',[App\Http\Controllers\BookingController::class, 'show'])->name('booking');

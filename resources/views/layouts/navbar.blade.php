@@ -109,7 +109,7 @@
 			  <a class="nav-link active" aria-current="page" href="#">Info</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Booking</a>
+			  <a class="nav-link" href="/booking">Booking</a>
 			</li>	
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
