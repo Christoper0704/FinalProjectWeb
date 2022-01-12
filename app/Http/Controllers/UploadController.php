@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UploadController extends Controller
 {
     public function upload(){
-		return view('upload');
+		return view('/');
 	}
  
 	public function proses_upload(Request $request){
@@ -18,6 +18,20 @@ class UploadController extends Controller
  
 		// menyimpan data file yang diupload ke variabel $file
 		$file = $request->file('file');
+		$restaurantimg = app('firebase.firestore')->database()->collection('restaurant_image')->document('LM3S8CJcPBUAQKBWTJFI');
+		$firebase_storage_path = 'RestaurantImage/';
+		$name     = $restaurantimg->id();
+		$localfolder = public_path('firebase-temp-uploads') .'/';
+		$extension = $file->getClientOriginalExtension();
+		$files      = $name. '.' . $extension;
+
+		if ($file->move($localfolder, $files)) {
+			$uploadedfile = fopen($localfolder.$files, 'r');
+			app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $files]);
+			//will remove from local laravel folder
+			unlink($localfolder . $files);
+			Session::flash('message', 'Succesfully Uploaded');
+		  }
 
 		$path = Storage::putFile(
             'images',
@@ -49,8 +63,7 @@ class UploadController extends Controller
                 // upload file
 		$file->move($tujuan_upload,$file->getClientOriginalName());
 
-		return redirect()
-            ->back()
-            ->withSuccess("Image succes Uploaded in " . $path);
+		return back()
+            ->withInput();
 	}
 }

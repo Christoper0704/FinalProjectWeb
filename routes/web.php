@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InputController;
+use App\Http\Controllers\RestaurantProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/inputdata', function () { 
+    return view('inputdata');
+});
+
+Route::get('add-data',[InputController::class,'create'])->name('add-data');
+Route::post('add-data',[InputController::class,'store'])->name('add-data');
+
 Route::get('/insert', function () {
     $stuRef = app('firebase.firestore')->database()->collection('Vtuber')->newDocument();
     $stuRef->set([
@@ -27,6 +36,11 @@ Route::get('/insert', function () {
 ]);
 });
 
+Route::group([  
+    'middleware' => 'fireauth',  
+  ], function () {  
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
+});  
 
 Route::group(['middleware' => ['auth']], function() {
     /**
@@ -38,12 +52,11 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('users/index', [LogoutController::class, 'index'])->name('users.index');
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/upload', 'UploadController@upload');
-Route::post('/upload/proses', 'UploadController@proses_upload');
+Route::post('/upload', [App\Http\Controllers\HomeController::class,'proses_upload'])->name('upload');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
+
 
 Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
 
@@ -52,3 +65,5 @@ Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::cl
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
 
 Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, 'verify_email'])->name('verify')->middleware('fireauth');
+
+Route::get('/profilerestaurant',[App\Http\Controllers\RestaurantProfileController::class, 'show'])->name('profilerestaurant');

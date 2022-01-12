@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class FireAuth
 {
@@ -17,13 +17,12 @@ class FireAuth
      */
     public function handle(Request $request, Closure $next)
     {
-    $uid = Session::get('uid');
-      if ($uid) {
+      if (Session::has('uid')) {
         return $next($request);
       }
       else {
         Session::flush();
-        return redirect('/login');
+        return redirect('/');
       }
     }
 }

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'nomorakta',
         'email',
         'password',
+        'localid',
     ];
 
     public function getAuthIdentifierName() {

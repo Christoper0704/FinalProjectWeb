@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class VerifyUser
 {

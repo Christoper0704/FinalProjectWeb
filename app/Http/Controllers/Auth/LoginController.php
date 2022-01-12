@@ -52,14 +52,12 @@ class LoginController extends Controller
 
     protected function login(Request $request) {
         try {
-           $signInResult = $this->auth->signInWithEmailAndPassword($request['email'], $request['password']);
-           $user = new User($signInResult->data());
+           $signInResult = app('firebase.auth')->signInWithEmailAndPassword($request['email'], $request['password']);
  
            //uid Session
            $loginuid = $signInResult->firebaseUserId();
            Session::put('uid',$loginuid);
- 
-           $result = Auth::login($user);
+
            return redirect($this->redirectPath());
         } catch (FirebaseException $e) {
            throw ValidationException::withMessages([$this->username() => [trans('auth.failed')],]);
@@ -78,7 +76,7 @@ class LoginController extends Controller
            $user->nomorakta = $verifiedIdToken->getClaim('nomorakta');
            $user->email = $verifiedIdToken->getClaim('email');
            $user->localId = $verifiedIdToken->getClaim('user_id');
-           Auth::login($user);
+           Auth::loginUsingId(1,true);
            return redirect($this->redirectPath());
         } catch (\InvalidArgumentException $e) {
            return redirect()->route('login');
@@ -86,4 +84,22 @@ class LoginController extends Controller
            return redirect()->route('login');
         }
      }
+
+     public function verify_email()
+    {
+      $uid = Session::get('uid');
+      $verify = app('firebase.auth')->getUser($uid)->emailVerified;
+        if ($verify == 1) {
+          return redirect()->route('home');
+        }
+        else{
+          try {
+            $email = app('firebase.auth')->getUser($uid)->email;
+            $link = app('firebase.auth')->sendEmailVerificationLink($email);
+          } catch (FirebaseException $e) {
+            Session::flash('error', $e->getMessage());
+          }
+          return view("reset.email");
+        }
+    }
 }

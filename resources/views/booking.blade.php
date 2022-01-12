@@ -4,9 +4,9 @@
 <body class="antialiased">
         <main class="py-4">
             <div class="container">
-                <div class ="row align-items-start">
+                <form class="row align-items-start rounded-3 px-md-2">
                     <div class="col-md-4 imageupload">
-                        <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                        <form action="/upload/proses" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <img src="{{url('/images/greyrectangle.png')}}" width="300px" height="200px">
                             <div class="file-upload centered">
@@ -17,8 +17,8 @@
                         </form> 
                     </div>
                     <div class="col-md-4">
-                    <form action="{{ route('add-data') }}" method="POST" class="rounded-3 px-md-2">
-                    @csrf
+                            @csrf
+
                             <div class="form-outline mb-2">
 
                                 <input id="restaurant_name" type="text" placeholder="Enter Restaurant Name" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
@@ -54,7 +54,7 @@
 
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-control @error('restaurant_type') is-invalid @enderror" name="restaurant_type" value="{{ old('restaurant_type') }}" required autocomplete="restaurant_type">
+                                <input id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-control @error('restaurant_type') is-invalid @enderror" name="type" value="{{ old('restaurant_type') }}" required autocomplete="restaurant_type">
 
                                 @error('restaurant_type')
                                     <span class="invalid-feedback" role="alert">
@@ -65,17 +65,17 @@
                             
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_location" type="text" placeholder="Location Restaurant" class="form-control @error('restaurant_location') is-invalid @enderror" name="restaurant_location" value="{{ old('restaurant_location') }}" required autocomplete="restaurant_location">
+                                <input id="restaurant_location" type="text" placeholder="Location Restaurant" class="form-control @error('restaurant_location') is-invalid @enderror" name="type" value="{{ old('restaurant_location') }}" required autocomplete="restaurant_location">
 
                                 @error('restaurant_location')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div> 
-                    </div> 
+                            </div>  
+                    </div>
                     <div class="col-md-4">
-                        <input type="submit"  value="Save" class="btn btn-m mb-1 d-grid gap-2 col-9 mx-auto" style="background-color:#EC7700; color:black; margin-top: 420px;">
+                        <button type="submit" class="btn btn-m mb-1 d-grid gap-2 col-9 mx-auto" style="background-color:#EC7700; margin-top: 420px;">Save</button>
                     </div>
                 </form>
             </div>
