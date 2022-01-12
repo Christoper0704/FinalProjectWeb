@@ -10,26 +10,27 @@
                     </div>
                     <div class="col-md-8" style="background-color:#C4C4C4; text-align:center;">
                             <h3>{{ $restoname }}</h3>
-                    </div>
-                    <div class="row">
+                    
+                    <div class="row mt-2">
                         <div class="col">
-                            <p>Operational Day:</p>
+                            <b>Operational Day:</b>
                             <p>{{ $opday }}</p>
                         </div>
                         <div class="col">
-                            <p>Operational Time:</p>
+                            <b>Operational Time:</b>
                             <p>{{ $optime }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Restaurant Location:</p>
+                            <b>Restaurant Location:</b>
                             <p>{{ $restolocation }}</p>
                         </div>
                         <div class="col">
-                            <p>Restaurant Type:</p>
+                            <b>Restaurant Type:</b>
                             <p>{{ $restotype }}</p>
                         </div>
+                    </div>
                     </div>
             </div>
             </div>
