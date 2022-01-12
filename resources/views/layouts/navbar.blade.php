@@ -106,16 +106,16 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav ">
 			<li class="nav-item">
-			  <a class="nav-link active" aria-current="page" href="#">Info</a>
+			  <a class="nav-link active" aria-current="page" href="/profilerestaurant">Info</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="/booking">Booking</a>
 			</li>	
             <li class="nav-item">
-                <form method="POST" action="{{ route('logout') }}">
+                <a href="/logout">
                     @csrf
                   <button type="submit" class="btn text-dark" style="background-color: #FFE194;">Logout</button>
-                </form>
+                </a>
             </form>
 			</li>			
 		  </ul>	

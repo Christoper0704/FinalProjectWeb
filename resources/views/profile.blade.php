@@ -6,7 +6,7 @@
             <div class="container">
                 <div class ="row align-items-start">
                     <div class="col-md-4">
-                        <img src="{{url('/images/greyrectangle.png')}}" width="300px" height="200px">
+                        <img src="{{ $image }}" width="300px" height="200px">
                     </div>
                     <div class="col-md-8" style="background-color:#C4C4C4; text-align:center;">
                             <h3>{{ $restoname }}</h3>

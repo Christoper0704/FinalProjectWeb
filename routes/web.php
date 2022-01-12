@@ -42,21 +42,23 @@ Route::group([
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');
 });  
 
-Route::group(['middleware' => ['auth']], function() {
-    /**
+/**
+*Route::group(['middleware' => ['auth']], function() {
+   * /**
     * Logout Route
-    */
-    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
- });
+    *Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+ *});
+ */
 
 Route::get('users/index', [LogoutController::class, 'index'])->name('users.index');
-Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+//Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+Route::get('/logout', function() {
+    return view('welcome');
+});
 
 Route::post('/upload', [App\Http\Controllers\HomeController::class,'proses_upload'])->name('upload');
 
 Auth::routes();
-
-
 
 Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
 
