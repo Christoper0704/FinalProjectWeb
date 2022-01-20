@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\Auth;
 
 class HomeController extends Controller
 {
@@ -25,23 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        try {
-            $uid = Session::get('uid');
-            $user = app('firebase.auth')->getUser($uid);
-            return view('home');
-          } catch (\Exception $e) {
-            return $e;
-          }
-    }
-
-    public function customer()
-    {
-      $userid = Session::get('uid');
-      return view('customers',compact('userid'));
-    }
-
-    public function logout(Request $request) {
-        Auth::logout();
-        return redirect('/');
+        return view('home');
     }
 }

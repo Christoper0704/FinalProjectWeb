@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kreait\Firebase\Database;
+use Illuminate\Support\Facades\Auth;
 
 class InputController extends Controller
 {
@@ -22,10 +23,11 @@ class InputController extends Controller
     }
 
     public function store(Request $request){
+        $restoid = Auth::id();
         $ref = app('firebase.firestore')->database()->collection('restaurant_data')->newDocument();
         $ref->set([
-            'rid' => 2, 
-            'restoimg' => 'A.png',
+            'rid' => $restoid, 
+            'restoimg' => 'restotiga.png',
             'restoname' => $request->restaurant_name,
             'opday' => $request->operational_day,
             'optime' => $request->operational_time,

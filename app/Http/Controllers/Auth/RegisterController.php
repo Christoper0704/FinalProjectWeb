@@ -8,9 +8,6 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Kreait\Firebase\Auth as FirebaseAuth;
-use Kreait\Firebase\Exception\FirebaseException;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -26,7 +23,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-    protected $auth;
+
     /**
      * Where to redirect users after registration.
      *
@@ -39,10 +36,9 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(FirebaseAuth $auth)
+    public function __construct()
     {
         $this->middleware('guest');
-        $this->auth = $auth;
     }
 
     /**
@@ -76,23 +72,4 @@ class RegisterController extends Controller
             'nomorakta' => $data['nomorakta'],
         ]);
     }
-
-    protected function register(Request $request) {
-        try {
-          $this->validator($request->all())->validate();
-          $userProperties = [
-             'email' => $request->input('email'),
-             'emailVerified' => false,
-             'password' => $request->input('password'),
-             'name' => $request->input('name'),
-             'nomorakta' => $request->input('nomorakta'),
-             'disabled' => false,
-          ];
-          $createdUser = $this->auth->createUser($userProperties);
-          return redirect()->route('login');
-        } catch (FirebaseException $e) {
-           Session::flash('error', $e->getMessage());
-           return back()->withInput();
-        }
-     }
 }

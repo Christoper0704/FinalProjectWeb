@@ -22,16 +22,7 @@ class User extends Authenticatable
         'nomorakta',
         'email',
         'password',
-        'localid',
     ];
-
-    public function getAuthIdentifierName() {
-        return 'localId';
-     }
-  
-     public function getAuthIdentifier(){
-        return $this->localId;
-     }
 
     /**
      * The attributes that should be hidden for serialization.
