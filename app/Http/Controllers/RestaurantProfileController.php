@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Database;
 use Illuminate\Support\Facades\Auth;
+use Google\Cloud\Firestore\FirestoreClient;
 
 class RestaurantProfileController extends Controller
 {
@@ -23,19 +24,16 @@ class RestaurantProfileController extends Controller
             $image = null;
         }
         
-        $resto = app('firebase.firestore');
-        $restoref= $resto->collection('restaurant_data');
-        $query = $restoref->where('restoid','=',$id);
-        $snapshot = $query->documents();
-        $data = [
-            "restoid"=>$snapshot->data()['restoid'],
-            "restoname" => $snapshot->data()['restoname'],
-            "opday" => $snapshot->data()['opday'],
-            "optime" => $snapshot->data()['optime'],
-            "restolocation" => $snapshot->data()['restolocation'],
-            "restotype" => $snapshot->data()['restotype'],
-        ];
+        $resto = app('firebase.firestore')->database()->collection('restaurant_data')->where('rid','==',$id)->documents();
+        // $data = [
+        //     "restoid"=>$resto->data()['rid'],
+        //     "restoname" => $resto->data()['restoname'],
+        //     "opday" => $resto->data()['opday'],
+        //     "optime" => $resto->data()['optime'],
+        //     "restolocation" => $resto->data()['restolocation'],
+        //     "restotype" => $resto->data()['restotype'],
+        // ];
         $restoimg = compact('image');
-        return view('profile',$data,$restoimg);
+        return view('profile',['resto'=>$resto],$restoimg);
     }
 }

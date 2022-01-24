@@ -27,7 +27,7 @@ class UploadController extends Controller
 
 		if ($file->move($localfolder, $files)) {
 			$uploadedfile = fopen($localfolder.$files, 'r');
-			app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $files]);
+			app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path .$files]);
 			//will remove from local laravel folder
 			unlink($localfolder . $files);
 			Session::flash('message', 'Succesfully Uploaded');
