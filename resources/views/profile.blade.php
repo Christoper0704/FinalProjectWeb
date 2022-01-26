@@ -32,6 +32,11 @@
                             <p>{{ $res->data()['restotype']  }}</p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <a href="/updateprofile">Update Profile</a>
+                        </div>
+                    </div>
                     </div>
                     @endforeach
             </div>

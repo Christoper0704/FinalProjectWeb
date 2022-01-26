@@ -24,6 +24,10 @@ Route::get('/inputdata', function () {
     return view('inputdata');
 });
 
+Route::get('/updateprofile', function () { 
+    return view('updateprofile');
+});
+
 Route::get('/login', function () { 
     return view('login');
 });
@@ -31,36 +35,30 @@ Route::get('/login', function () {
 Route::get('add-data',[InputController::class,'create'])->name('add-data');
 Route::post('add-data',[InputController::class,'store'])->name('add-data');
 
+Route::post('update-data',[UpdateDataController::class,'update'])->name('update-data');
+
 Route::post('loginuser',[LoginUserController::class,'check'])->name('loginuser');
 Route::get('loginuser',[LoginUserController::class,'index'])->name('loginuser');
 
-Route::get('/insert', function () {
-    $stuRef = app('firebase.firestore')->database()->collection('Vtuber')->newDocument();
-    $stuRef->set([
-        'firstname' => 'A',
-        'lastname' => 'B',
-        'ras' => 'C'
-]);
-});
-
-/**
-*Route::group(['middleware' => ['auth']], function() {
-   * /**
-    * Logout Route
-    *Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
- *});
- */
+// Route::get('/insert', function () {
+//     $stuRef = app('firebase.firestore')->database()->collection('Vtuber')->newDocument();
+//     $stuRef->set([
+//         'firstname' => 'A',
+//         'lastname' => 'B',
+//         'ras' => 'C'
+// ]);
+// });
 
 //Route::get('users/index', [LogoutController::class, 'index'])->name('users.index');
-//Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
-Route::group(['middleware' => ['auth']], function() {
-    /**
-    * Logout Route
-    */
-    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
- });
+Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+// Route::group(['middleware' => ['auth']], function() {
+//     /**
+//     * Logout Route
+//     */
+//     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+//  });
 
-Route::post('/upload', [App\Http\Controllers\HomeController::class,'proses_upload'])->name('upload');
+Route::post('upload', [App\Http\Controllers\UploadController::class,'proses_upload'])->name('upload');
 
 Auth::routes();
 
@@ -77,3 +75,6 @@ Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, '
 Route::get('/profilerestaurant',[App\Http\Controllers\RestaurantProfileController::class, 'show'])->name('profilerestaurant');
 
 Route::get('/booking',[App\Http\Controllers\BookingController::class, 'show'])->name('booking');
+
+Route::get('/accept/{id}', [App\Http\Controllers\BookingController::class, 'accept'])->name('accept');
+Route::get('/cancel/{id}', [App\Http\Controllers\BookingController::class, 'cancel'])->name('cancel');

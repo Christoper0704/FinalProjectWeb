@@ -5,19 +5,8 @@
         <main class="py-4">
             <div class="container">
                 <div class ="row align-items-start">
-                    <div class="col-md-4 imageupload">
-                        <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                            <img src="{{url('/images/greyrectangle.png')}}" width="300px" height="200px">
-                            <div class="file-upload centered">
-                                <input type="file" name="image" />
-                                <img src="{{url('/images/plus.png')}}" width="50px" height="50px">
-                            </div>
-                            <input type="submit" value="Add Restaurant Image" class="btn btn-primary textbottom">
-                        </form> 
-                    </div>
-                    <div class="col-md-4">
-                    <form action="{{ route('add-data') }}" method="POST" class="rounded-3 px-md-2">
+                    <div class="col-md-6">
+                    <form action="{{ route('update-data') }}" method="POST" class="rounded-3 px-md-2">
                     @csrf
                             <div class="form-outline mb-2">
 
@@ -74,8 +63,8 @@
                                 @enderror
                             </div> 
                     </div> 
-                    <div class="col-md-4">
-                        <input type="submit"  value="Save" class="btn btn-m mb-1 d-grid gap-2 col-9 mx-auto" style="background-color:#EC7700; color:black; margin-top: 420px;">
+                    <div class="col-md-6">
+                        <input type="submit"  value="Update" class="btn btn-m mb-1 d-grid gap-2 col-9 mx-auto" style="background-color:#EC7700; color:black; margin-top: 420px;">
                     </div>
                 </form>
             </div>

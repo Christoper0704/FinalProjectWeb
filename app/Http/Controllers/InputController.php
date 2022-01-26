@@ -23,7 +23,7 @@ class InputController extends Controller
     }
 
     public function store(Request $request){
-        $restoid = Auth::id();
+        $restoid = Auth::user()->id;
         $ref = app('firebase.firestore')->database()->collection('restaurant_data')->newDocument();
         $ref->set([
             'rid' => $restoid, 

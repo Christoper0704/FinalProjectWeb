@@ -109,14 +109,13 @@
 			  <a class="nav-link active" aria-current="page" href="/profilerestaurant">Info</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="/booking">Booking</a>
+                <a class="nav-link active" aria-current="page" href="/booking">Booking</a>
 			</li>	
             <li class="nav-item">
-                <a href="/logout">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                   <button type="submit" class="btn text-dark" style="background-color: #FFE194;">Logout</button>
-                </a>
-            </form>
+                </form>
 			</li>			
 		  </ul>	
     </div>
