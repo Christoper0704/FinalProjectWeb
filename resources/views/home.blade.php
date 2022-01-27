@@ -10,7 +10,7 @@
                         {{ csrf_field() }}
                             <img src="{{url('/images/greyrectangle.png')}}" width="300px" height="200px">
                             <div class="file-upload centered">
-                                <input type="file" name="file" />
+                                <input type="file" name="image" />
                                 <img src="{{url('/images/plus.png')}}" width="50px" height="50px">
                             </div>
                             <input type="submit" value="Add Restaurant Image" class="btn btn-primary textbottom">

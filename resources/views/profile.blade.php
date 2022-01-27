@@ -34,7 +34,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <a href="/updateprofile">Update Profile</a>
+                            <a href="/updateprofile/{{ $res->id() }}">Update Profile</a>
                         </div>
                     </div>
                     </div>

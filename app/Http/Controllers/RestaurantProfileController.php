@@ -13,7 +13,7 @@ class RestaurantProfileController extends Controller
     public function show(){
         $id = Auth::user()->id;
         $imageexpire = new \DateTime('tomorrow');
-        $reference = app('firebase.storage')->getbucket()->object("resto1.jpg");
+        $reference = app('firebase.storage')->getbucket()->object("RestaurantImage/$id");
 
         if($reference->exists())
         {

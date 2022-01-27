@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UpdateDataController extends Controller
 {
-    public function update(Request $request){
+    public function index($id){
+        return view('updateprofile',['id' => $id]);
+    }
+
+    public function update(Request $request,$id){
         $id = Auth::user()->id;
         
         $resto = app('firebase.firestore')->database()->collection('restaurant_data')->where('rid','==',$id)->documents();
@@ -21,9 +25,6 @@ class UpdateDataController extends Controller
             ['path' => 'restolocation','value' => $request->restaurant_location]
         ]);
 
-        if($res)
-        {
-            return redirect('/profilerestaurant')->with('status','Data Updated Successfully');
-        }
+        return redirect('/profilerestaurant')->with('status','Data Updated Successfully');
     }
 }

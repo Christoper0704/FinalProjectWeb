@@ -18,10 +18,8 @@ class LogoutController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        $accessToken = auth()->user()->token();
-        $token= $request->user()->tokens->find($accessToken);
-        $token->revoke();
-        return response(['message' => 'You have been successfully logged out.'], 200);
+        Session::flush();
+        return redirect('/');
     }
 
 }
