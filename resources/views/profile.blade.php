@@ -25,11 +25,11 @@
                     <div class="row">
                         <div class="col">
                             <b>Restaurant Location:</b>
-                            <p>{{ $res->data()['restolocation']  }}</p>
+                            <p>{{ $res->data()['restolocation'] }}</p>
                         </div>
                         <div class="col">
                             <b>Restaurant Type:</b>
-                            <p>{{ $res->data()['restotype']  }}</p>
+                            <p>{{ $res->data()['restotype'] }}</p>
                         </div>
                     </div>
                     <div class="row">

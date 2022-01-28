@@ -24,7 +24,7 @@ Route::get('/inputdata', function () {
     return view('inputdata');
 });
 
-Route::get('/updateprofile/{id}', 'UpdateDataController@index');
+Route::get('/updateprofile/{id}', [App\Http\Controllers\UpdateDataController::class, 'index'])->name('updateprofile');
 // Route::get('/updateprofile', function () { 
 //     return view('updateprofile');
 // });
@@ -38,9 +38,9 @@ Route::get('/login', function () {
 Route::get('add-data',[InputController::class,'create'])->name('add-data');
 Route::post('add-data',[InputController::class,'store'])->name('add-data');
 
-Route::post('update-data',[UpdateDataController::class,'update'])->name('update-data');
+Route::post('update-data',[App\Http\Controllers\UpdateDataController::class,'update'])->name('update-data');
 
-Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+//Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Route::get('/insert', function () {
 //     $stuRef = app('firebase.firestore')->database()->collection('Vtuber')->newDocument();
@@ -66,13 +66,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
+//Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
 
-Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::class)->middleware('user','fireauth');
+// Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::class)->middleware('user','fireauth');
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
 
-Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, 'verify_email'])->name('verify')->middleware('fireauth');
+// Route::get('/email/verify', [App\Http\Controllers\Auth\ResetController::class, 'verify_email'])->name('verify')->middleware('fireauth');
 
 Route::get('/profilerestaurant',[App\Http\Controllers\RestaurantProfileController::class, 'show'])->name('profilerestaurant');
 

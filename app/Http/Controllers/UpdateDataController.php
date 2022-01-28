@@ -11,16 +11,14 @@ class UpdateDataController extends Controller
         return view('updateprofile',['id' => $id]);
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request){
         $id = Auth::user()->id;
-        
-        $resto = app('firebase.firestore')->database()->collection('restaurant_data')->where('rid','==',$id)->documents();
-        $iddoc = $resto->id();
-        $res = app('firebase.firestore')->database()->collection('restaurant_data')->document($iddoc)
+
+        $res = app('firebase.firestore')->database()->collection('restaurant_data')->document($request->id)
         ->update([
             ['path' => 'restoname','value' => $request->restaurant_name],
-            ['path' => 'opday','value' => $request->operation_day],
-            ['path' => 'optime','value' => $request->operation_time],
+            ['path' => 'opday','value' => $request->operational_day],
+            ['path' => 'optime','value' => $request->operational_time],
             ['path' => 'restotype','value' => $request->restaurant_type],
             ['path' => 'restolocation','value' => $request->restaurant_location]
         ]);

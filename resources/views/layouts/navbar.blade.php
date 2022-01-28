@@ -112,10 +112,14 @@
                 <a class="nav-link active" aria-current="page" href="/booking">Booking</a>
 			</li>	
             <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                  <button type="submit" class="btn text-dark" style="background-color: #FFE194;">Logout</button>
-                </form>
+            <a class="nav-link active" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
 			</li>			
 		  </ul>	
     </div>
