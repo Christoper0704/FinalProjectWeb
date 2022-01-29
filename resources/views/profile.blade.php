@@ -6,7 +6,7 @@
             <div class="container">
                 <div class ="row align-items-start">
                     <div class="col-md-4">
-                        <img src="{{ $image }}" width="300px" height="200px">
+                        <img src="{{ $image }}" width="300px" height="200px" alt="restoimage">
                     </div>
                     @foreach ($resto as $res)
                     <div class="col-md-8" style="background-color:#C4C4C4; text-align:center;">

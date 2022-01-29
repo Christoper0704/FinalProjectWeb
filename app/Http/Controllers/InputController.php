@@ -27,7 +27,7 @@ class InputController extends Controller
         $ref = app('firebase.firestore')->database()->collection('restaurant_data')->newDocument();
         $ref->set([
             'rid' => $restoid, 
-            'restoimg' => 'restotiga.png',
+            'restoimg' => "",
             'restoname' => $request->restaurant_name,
             'opday' => $request->operational_day,
             'optime' => $request->operational_time,

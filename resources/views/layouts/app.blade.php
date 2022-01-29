@@ -59,7 +59,7 @@
     <div id="app">
     <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
-        <a class="navbar-brand text-dark" href="#">
+        <a class="navbar-brand text-dark" href="/register">
         <img src="{{url('/images/Foodie.png')}}" alt="Logo" style="width:50px;" class="rounded-pill"><span>Foodie</span>
         </a>
     </div>

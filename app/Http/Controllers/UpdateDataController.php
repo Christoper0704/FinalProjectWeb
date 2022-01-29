@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class UpdateDataController extends Controller
 {
     public function index($id){
-        return view('updateprofile',['id' => $id]);
+        $resto = app('firebase.firestore')->database()->collection('restaurant_data')->document($id);
+        return view('updateprofile',['id' => $id, 'resto' => $resto]);
     }
 
     public function update(Request $request){
@@ -22,7 +23,7 @@ class UpdateDataController extends Controller
             ['path' => 'restotype','value' => $request->restaurant_type],
             ['path' => 'restolocation','value' => $request->restaurant_location]
         ]);
-
+        
         return redirect('/profilerestaurant')->with('status','Data Updated Successfully');
     }
 }

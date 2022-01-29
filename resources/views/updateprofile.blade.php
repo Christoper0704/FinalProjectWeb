@@ -10,7 +10,6 @@
                     @csrf
                             <input type="hidden" name="id" value="{{ $id }}">
                             <div class="form-outline mb-2">
-
                                 <input id="restaurant_name" type="text" placeholder="Enter New Restaurant Name" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
 
                                 @error('restaurant_name')
@@ -44,8 +43,17 @@
 
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_type" type="text" placeholder="Enter New Type Restaurant" class="form-control @error('restaurant_type') is-invalid @enderror" name="restaurant_type" value="{{ old('restaurant_type') }}" required autocomplete="restaurant_type">
-
+                                <select id="restaurant_type" type="text" class="form-select @error('restaurant_type') is-invalid @enderror" name="restaurant_type" required autocomplete="restaurant_type">
+                                    @foreach($resto as $res)
+                                    <option selected id="selected-option" value="{{ $res->data()['restotype'] }}">{{ $res->data()['restotype'] }}</option>
+                                    @endforeach
+                                    <option value="Western">Western</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Indonesian">Indonesian</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Desserts">Desserts</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>
                                 @error('restaurant_type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

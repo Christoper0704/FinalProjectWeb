@@ -54,8 +54,15 @@
 
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-control @error('restaurant_type') is-invalid @enderror" name="restaurant_type" value="{{ old('restaurant_type') }}" required autocomplete="restaurant_type">
-
+                                <select id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-select @error('restaurant_type') is-invalid @enderror" name="restaurant_type" required autocomplete="restaurant_type">
+                                    <option selected>Select Restaurant Type</option>
+                                    <option value="Western">Western</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Indonesian">Indonesian</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Desserts">Desserts</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>
                                 @error('restaurant_type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

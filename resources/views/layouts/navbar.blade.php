@@ -92,6 +92,12 @@
             opacity:0;
             cursor:pointer;
         }
+        select option{
+            margin: 40px;
+            background: #C4C4C4;
+            color: black;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 <body>

@@ -4,6 +4,9 @@
 <body class="antialiased">
         <main class="py-4">
             <div class="container">
+                <h6>Jika sudah memiliki data restoran, silakan klik menu info pada bagian atas halaman ini</h6>
+            </div>
+            <div class="container">
                 <div class ="row align-items-start">
                     <div class="col-md-4 imageupload">
                         <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
@@ -21,7 +24,7 @@
                     @csrf
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_name" type="text" placeholder="Enter Restaurant Name" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
+                                <input id="restaurant_name" type="text" placeholder="Restaurant Name" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
 
                                 @error('restaurant_name')
                                     <span class="invalid-feedback" role="alert">
@@ -54,8 +57,15 @@
 
                             <div class="form-outline mb-2">
 
-                                <input id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-control @error('restaurant_type') is-invalid @enderror" name="restaurant_type" value="{{ old('restaurant_type') }}" required autocomplete="restaurant_type">
-
+                                <select id="restaurant_type" type="text" placeholder="Type Restaurant" class="form-select @error('restaurant_type') is-invalid @enderror" name="restaurant_type" required autocomplete="restaurant_type">
+                                    <option selected>Select Restaurant Type</option>
+                                    <option value="Western">Western</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Indonesian">Indonesian</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Desserts">Desserts</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>
                                 @error('restaurant_type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

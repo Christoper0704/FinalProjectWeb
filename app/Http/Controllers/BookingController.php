@@ -44,7 +44,16 @@ class BookingController extends Controller
     {
         $resto = app('firebase.firestore')->database()->collection('restaurants_booking')->document($id)
         ->update([
-            ['path' => 'status','value' => 'canceled']
+            ['path' => 'status','value' => 'cancelled']
+        ]);
+        return redirect()->back(); 
+    }
+
+    public function finish($id)
+    {
+        $resto = app('firebase.firestore')->database()->collection('restaurants_booking')->document($id)
+        ->update([
+            ['path' => 'status','value' => 'finished']
         ]);
         return redirect()->back(); 
     }
