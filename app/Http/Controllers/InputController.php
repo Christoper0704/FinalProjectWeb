@@ -36,10 +36,10 @@ class InputController extends Controller
         ]);
         if($ref)
         {
-            return redirect('/profilerestaurant')->with('status','Data Added Successfully');
+            return redirect('/profilerestaurant');
         }
         else{
-            return redirect('/inputdata')->with('status','Data Not Added');
+            return redirect()->back();
         }
     }
 }
