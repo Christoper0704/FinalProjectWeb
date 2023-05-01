@@ -1,3 +1,16 @@
+## Foodie Web
+
+<p>This project is built for Website Programming Course Final Project. The goal of this website is to help managing restaurant or food selling place. These are my team:</p>
+<ul>
+<li>Christoper Luis Alexander</li>
+<li>Christiano Ekasakti Sangalang</li>
+<li>Rizky Octavian Dwipratama</li>
+</ul>
+
+<p>This project is built using Laravel as Frontend and Backend Platform.</p>
+
+##
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
