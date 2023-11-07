@@ -8,6 +8,7 @@
 </ul>
 
 <p>This project is built using Laravel as Frontend and Backend Platform.</p>
+<p>Demo: https://youtu.be/rfr0mS8DhVU?si=Q5LXoGoo0Joo8EdJ</p>
 
 ##
 
