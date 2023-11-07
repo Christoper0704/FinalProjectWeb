@@ -8,7 +8,7 @@
 </ul>
 
 <p>This project is built using Laravel as Frontend and Backend Platform.</p>
-<a href="https://youtu.be/rfr0mS8DhVU?si=Q5LXoGoo0Joo8EdJ">![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)</a>
+<a href="">![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)</a>
 
 ##
 
